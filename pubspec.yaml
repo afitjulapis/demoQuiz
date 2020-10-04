@@ -26,6 +26,8 @@ dependencies:
   flutter_emoji: ^2.2.1+1
   font_awesome_flutter: ^8.8.1
   random_color: ^1.0.5
+  provider: ^3.2.0
+  shared_preferences: ^0.5.10
   flutter:
     sdk: flutter
 

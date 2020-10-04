@@ -1,5 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:random_color/random_color.dart';
+import 'package:somedemo/provider.dart';
+import 'package:somedemo/scorepage.dart';
 
 class Medium extends StatefulWidget {
   @override
@@ -7,33 +13,9 @@ class Medium extends StatefulWidget {
 }
 
 class _MediumState extends State<Medium> {
-  Map a= 
-    {
-      0:{
-          'question':'🤳 💪?',
-          'answer':1,
-          'option':['Selfie Sado','Kuat Selfie','Tidak Pasti']
-          
-          
-        },
-      1:{
-          'question':' 🧠 🦷',
-          'answer':1,
-          'option':['Otak gigi','Otak Gigi Hadid','Tembak saja']
-          
-          
-        },
-      2:{
-          'question':'🧑‍🎓 👨‍🎓 👩‍🎓',
-          'answer':0,
-          'option':['I nak grad pls sobsob','Topi Ijazah','Emoji ke ni?']
-          
-          
-        }
-      
-    };
-  List<int> recordedAnswer=List<int>();
+  
   int correctans;
+  int totalAnswerd;
   int selectedIndex;
   int servicesIndex;
   int answeredquestions;
@@ -54,6 +36,7 @@ class _MediumState extends State<Medium> {
     onPageChanged(0);
     controller = PageController(initialPage: 0);
     correctans=0;
+    totalAnswerd=0;
     super.initState();
   }
 
@@ -61,112 +44,130 @@ class _MediumState extends State<Medium> {
   Widget build(BuildContext context) {
     var h=MediaQuery.of(context).size.height;
     var w=MediaQuery.of(context).size.width;
-    var progBar=(w*0.8)*(correctans/a.length);
-    return Scaffold(
-      backgroundColor:Color(0xFFf5f5f6),
-      body: Stack(
-        children: <Widget>[
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Opacity(
-                opacity: 0.5,
-                child: Image.asset('assets/bgMenu2.png')),
-            ],
-          ),
-          Column(
-            children: <Widget>[
-              SizedBox(height: h*0.1,),
-              Text('Peratusan betul:',style:TextStyle(fontWeight: FontWeight.normal,fontSize: 16,color:Colors.grey[500])),
-              SizedBox(height: h*0.01 ,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(width: w*0.1,),
-                  Stack(
+    var prov = Provider.of<Providing>(context);
+    var progBar=(w*0.8)*(correctans/prov.soalanMedium.length);
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        backgroundColor:Color(0xFFf5f5f6),
+        body: Stack(
+          children: <Widget>[
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Opacity(
+                  opacity: 0.5,
+                  child: Image.asset('assets/bgMenu2.png')),
+              ],
+            ),
+            Column(
+              children: <Widget>[
+                SizedBox(height: h*0.07,),
+                InkWell(
+                  onTap: (){
+                    Navigator.pushNamedAndRemoveUntil(context, '/mainpage', (route)=>false);
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(500),
-                        child: AnimatedContainer(
-                          duration: Duration(milliseconds: 100),
-                          height: h*0.06,
-                          width: progBar,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(colors: [Colors.purple,Colors.pink])
-                          ),
-                          
-                        ),
-                      ),
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(500),
-                        child: Container(
-                          height: h*0.06,
-                          width: w*.8,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(500),
-                            border: Border.all(color: Colors.grey[300],width: 3),
-                          ),
-                          
-                        ),
-                      ),
-                      Container(
-                        width: w*0.8,
-                        height: h*0.06,
-                        child: Center(
-                          child: Stack(
-                              children: <Widget>[
-                                Text(((correctans/a.length)*100).round().toString()+'%',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color:progBar>w*0.4? Colors.white:Colors.grey[800])),
-                                
-                              ],
+                      SizedBox(width: w*0.02,),
+                      FaIcon(FontAwesomeIcons.home,color: Colors.blue,size: 16,),
+                      SizedBox(width: w*0.01,),
+                      Text('Menu',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 16,color:Colors.blue)),
+                    ],
+                  ),
+                ),
+                SizedBox(height: h*0.02,),
+                Text('Peratusan betul:',style:TextStyle(fontWeight: FontWeight.normal,fontSize: 16,color:Colors.grey[500])),
+                SizedBox(height: h*0.01 ,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    SizedBox(width: w*0.1,),
+                    Stack(
+                      children: <Widget>[
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(500),
+                          child: AnimatedContainer(
+                            duration: Duration(milliseconds: 100),
+                            height: h*0.06,
+                            width: progBar,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(colors: [Colors.purple,Colors.pink])
                             ),
+                            
+                          ),
                         ),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-              SizedBox(height: h*0.05,),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(500),
-                child: Container(
-                  width: w*0.45,
-                  height: h*0.08,
-                  color: Colors.greenAccent,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: <Widget>[
-                          Text('Question '+(selectedIndex+1).toString(),style:TextStyle(fontWeight: FontWeight.bold,fontSize: 25,color:Colors.white)),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: <Widget>[
-                          Text('out of '+a.length.toString(),style:TextStyle(fontWeight: FontWeight.normal,fontSize: 16,color:Colors.white)),
-                        ],
-                      ),
-                    ],
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(500),
+                          child: Container(
+                            height: h*0.06,
+                            width: w*.8,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(500),
+                              border: Border.all(color: Colors.grey[300],width: 3),
+                            ),
+                            
+                          ),
+                        ),
+                        Container(
+                          width: w*0.8,
+                          height: h*0.06,
+                          child: Center(
+                            child: Stack(
+                                children: <Widget>[
+                                  Text(((correctans/prov.soalanMedium.length)*100).round().toString()+'%',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color:progBar>w*0.4? Colors.white:Colors.grey[800])),
+                                  
+                                ],
+                              ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(height: h*0.05,),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(500),
+                  child: Container(
+                    width: w*0.45,
+                    height: h*0.08,
+                    color: Colors.amber,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: <Widget>[
+                            Text('Soalan '+(selectedIndex+1).toString(),style:TextStyle(fontWeight: FontWeight.bold,fontSize: 25,color:Colors.white)),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: <Widget>[
+                            Text('daripada '+prov.soalanMedium.length.toString(),style:TextStyle(fontWeight: FontWeight.normal,fontSize: 16,color:Colors.white)),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              
+                
 
-              Expanded(
-                child: PageView(
-                  controller: controller,
-                  children: addedAttendeesList(),
-                  onPageChanged: onPageChanged,
+                Expanded(
+                  child: PageView(
+                    controller: controller,
+                    children: addedAttendeesList(),
+                    onPageChanged: onPageChanged,
+                  ),
                 ),
-              ),
-              SizedBox(height: h*0.05,),
 
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -176,14 +177,14 @@ class _MediumState extends State<Medium> {
     var h = MediaQuery.of(context).size.height;
     var w = MediaQuery.of(context).size.width;
     
-    
+    var prov = Provider.of<Providing>(context);
     List<Widget> listwidget = [];
     
 
-    for(int  i = 0; i < a.length; i++){
-      if(recordedAnswer.length<i+1){
-          recordedAnswer.add(99);
-          print(recordedAnswer);
+    for(int  i = 0; i < prov.soalanMedium.length; i++){
+      if(prov.recordedAnswerMed.length<i+1){
+          prov.recordedAnswerMed.add(99);
+          print(prov.recordedAnswerMed);
       }
       listwidget.add(
         Container(
@@ -196,7 +197,7 @@ class _MediumState extends State<Medium> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(a[i]['question'],style:TextStyle(fontWeight: FontWeight.bold,fontSize: 25,color:Colors.grey[600])),
+                  Text(prov.soalanMedium[i]['question'],style:TextStyle(fontWeight: FontWeight.bold,fontSize: 25,color:Colors.grey[600])),
                 ],
               ),
               SizedBox(height: h*0.07,),
@@ -206,13 +207,14 @@ class _MediumState extends State<Medium> {
                 onTap: (){
 
                  setState(() {
-                    if(recordedAnswer[i]==99){
-                      recordedAnswer[i]=0;
-                      print(recordedAnswer);
-                      if(a[i]['answer']==recordedAnswer[i]){
+                    if(prov.recordedAnswerMed[i]==99){
+                      prov.recordedAnswerMed[i]=0;
+                      print(prov.recordedAnswerMed);
+                      if(prov.soalanMedium[i]['answer']==prov.recordedAnswerMed[i]){
                         ++correctans;
 
                       }
+                      ++totalAnswerd;
                     }
                   });
                 },
@@ -235,7 +237,7 @@ class _MediumState extends State<Medium> {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color:recordedAnswer[i]==0? recordedAnswer[i]==a[i]['answer']?Colors.green:Colors.red:Colors.grey[300],width: 3),
+                          border: Border.all(color:prov.recordedAnswerMed[i]==0? prov.recordedAnswerMed[i]==prov.soalanMedium[i]['answer']?Colors.green:Colors.red:Colors.grey[300],width: 3),
                         ),
                         
                       ),
@@ -246,7 +248,7 @@ class _MediumState extends State<Medium> {
                       child: Center(
                         child: Stack(
                             children: <Widget>[
-                              Text(a[i]['option'][0],style:TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color:Colors.red)),
+                              Text(prov.soalanMedium[i]['option'][0],style:TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color:Colors.red)),
                             ],
                           ),
                       ),
@@ -260,13 +262,14 @@ class _MediumState extends State<Medium> {
               InkWell(
                 onTap: (){
                   setState(() {
-                    if(recordedAnswer[i]==99){
-                      recordedAnswer[i]=1;
-                      print(recordedAnswer);
-                      if(a[i]['answer']==recordedAnswer[i]){
+                    if(prov.recordedAnswerMed[i]==99){
+                      prov.recordedAnswerMed[i]=1;
+                      print(prov.recordedAnswerMed);
+                      if(prov.soalanMedium[i]['answer']==prov.recordedAnswerMed[i]){
                         ++correctans;
 
                       }
+                      ++totalAnswerd;
                     }
                   });
                 },
@@ -289,7 +292,7 @@ class _MediumState extends State<Medium> {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color:recordedAnswer[i]==1? recordedAnswer[i]==a[i]['answer']?Colors.green:Colors.red:Colors.grey[300],width: 3),
+                          border: Border.all(color:prov.recordedAnswerMed[i]==1? prov.recordedAnswerMed[i]==prov.soalanMedium[i]['answer']?Colors.green:Colors.red:Colors.grey[300],width: 3),
                         ),
                         
                       ),
@@ -300,7 +303,7 @@ class _MediumState extends State<Medium> {
                       child: Center(
                         child: Stack(
                             children: <Widget>[
-                              Text(a[i]['option'][1],style:TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color:Colors.red)),
+                              Text(prov.soalanMedium[i]['option'][1],style:TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color:Colors.red)),
                             ],
                           ),
                       ),
@@ -314,13 +317,14 @@ class _MediumState extends State<Medium> {
               InkWell(
                 onTap: (){
                   setState(() {
-                    if(recordedAnswer[i]==99){
-                      recordedAnswer[i]=2;
-                      print(recordedAnswer);
-                      if(a[i]['answer']==recordedAnswer[i]){
+                    if(prov.recordedAnswerMed[i]==99){
+                      prov.recordedAnswerMed[i]=2;
+                      print(prov.recordedAnswerMed);
+                      if(prov.soalanMedium[i]['answer']==prov.recordedAnswerMed[i]){
                         ++correctans;
 
                       }
+                      ++totalAnswerd;
                     }
                   });
                 },
@@ -343,7 +347,7 @@ class _MediumState extends State<Medium> {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color:recordedAnswer[i]==2? recordedAnswer[i]==a[i]['answer']?Colors.green:Colors.red:Colors.grey[300],width: 3),
+                          border: Border.all(color:prov.recordedAnswerMed[i]==2? prov.recordedAnswerMed[i]==prov.soalanMedium[i]['answer']?Colors.green:Colors.red:Colors.grey[300],width: 3),
                         ),
                         
                       ),
@@ -352,14 +356,14 @@ class _MediumState extends State<Medium> {
                       width: w*0.8,
                       height: h*0.1,
                       child: Center(
-                        child:  Text(a[i]['option'][2],style:TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color:Colors.red)),
+                        child:  Text(prov.soalanMedium[i]['option'][2],style:TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color:Colors.red)),
                            
                       ),
                     )
                   ],
                 ),
               ),
-              SizedBox(height: h*0.05,),
+              SizedBox(height: h*0.04,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -389,8 +393,42 @@ class _MediumState extends State<Medium> {
                       ),
                     ),
                   ),
-                  i==0||i+1==a.length?Container():SizedBox(width: w*0.2,),
-                  i+1==a.length?Container(): ClipRRect(
+                  i==0||i+1==prov.soalanMedium.length?Container():SizedBox(width: w*0.2,),
+                  
+                  i+1==prov.soalanMedium.length?
+                  totalAnswerd==prov.soalanMedium.length? Padding(
+                    padding:  EdgeInsets.fromLTRB(w*0.1, 0, 0, 0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(500),
+                      child: InkWell(
+                        onTap: (){
+                          prov.scoreForMedium=((correctans/prov.soalanMedium.length)*100).round();
+                          prov.iAmFrom='med';
+                          
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => Scorepage()));
+                        },
+                        child: Container(
+                          width: w*0.3,
+                          height: h*0.05,
+                          color: Colors.lightGreenAccent,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: <Widget>[
+                                  Text('Selesai ',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15,color:Colors.black)),
+                                ],
+                              ),
+                              
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ):Container(): 
+                  ClipRRect(
                     borderRadius: BorderRadius.circular(500),
                     child: InkWell(
                       onTap: (){
