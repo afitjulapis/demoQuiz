@@ -175,8 +175,8 @@ class _MyHomePageState extends State<MyHomePage>with TickerProviderStateMixin {
                             SizedBox(width: w*0.36,),
                             Column(
                               children: <Widget>[
-                                SizedBox(height: h*0.04,),
-                                Text(parser.emojify('🕵️'),style: TextStyle(fontSize: 60, fontWeight: FontWeight.w600),),
+                                SizedBox(height: h*0.03,),
+                                Text(parser.emojify('🕵️'),style: TextStyle(fontSize: 80, fontWeight: FontWeight.w600),),
                               ],
                             ),
                           ],
@@ -194,7 +194,7 @@ class _MyHomePageState extends State<MyHomePage>with TickerProviderStateMixin {
               Row(
                mainAxisAlignment: MainAxisAlignment.center,
                children: <Widget>[
-                 Text("Cara bermain?",style: TextStyle(fontSize: 18,fontFamily: 'bree'),)
+                //  Text("Cara bermain?",style: TextStyle(fontSize: 18,fontFamily: 'bree'),)
                ],
               ),
               SizedBox(height: h*0.05,),
