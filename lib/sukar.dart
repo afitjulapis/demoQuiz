@@ -283,12 +283,12 @@ class _SukarState extends State<Sukar> {
                       borderRadius: BorderRadius.circular(500),
                       child: InkWell(
                         onTap: (){
-                          prov.scoreForSusah=((correctans/prov.soalanSukar.length)*100).round();
                           prov.iAmFrom='hard';
                           if(prov.soalanSukar[i]['answer']==prov.recordedAnswerSusah[i]){
                             print('a');
                             ++correctans;
                             ++totalAnswerd;
+                            prov.scoreForSusah=((correctans/prov.soalanSukar.length)*100).round();
                             Navigator.push(context, MaterialPageRoute(builder: (context) => Scorepage()));
                           }else if(prov.recordedAnswerSusah[i].length>0){
                             ++totalAnswerd;
