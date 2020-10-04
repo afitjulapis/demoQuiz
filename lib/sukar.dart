@@ -266,7 +266,7 @@ class _SukarState extends State<Sukar> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: <Widget>[
-                                Text('Kembali',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15,color:Colors.white)),
+                                Text('Kembali.',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15,color:Colors.white)),
                               ],
                             ),
                             
