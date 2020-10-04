@@ -286,13 +286,16 @@ class _SukarState extends State<Sukar> {
                           prov.scoreForSusah=((correctans/prov.soalanSukar.length)*100).round();
                           prov.iAmFrom='hard';
                           if(prov.soalanSukar[i]['answer']==prov.recordedAnswerSusah[i]){
+                            print('a');
                             ++correctans;
                             ++totalAnswerd;
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => Scorepage()));
                           }else if(prov.recordedAnswerSusah[i].length>0){
                             ++totalAnswerd;
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => Scorepage()));
+
                         }
                           
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => Scorepage()));
                         },
                         child: Container(
                           width: w*0.3,

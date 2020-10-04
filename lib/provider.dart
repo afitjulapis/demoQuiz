@@ -109,6 +109,7 @@ class Providing with ChangeNotifier{
     await prefs.setString('SLMedium', temp.toString());
   }
   Future getScoreListMED() async {
+    print('getting');
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String tempStirng = (prefs.getString('SLMedium')) ;
       if(tempStirng==null||tempStirng.length==0){

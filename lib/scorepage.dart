@@ -213,12 +213,12 @@ class _ScorepageState extends State<Scorepage> with TickerProviderStateMixin {
                                                                                         prov.setSCoreList(json.encode(prov.scoreList));
                                                                                         Navigator.pop(context);
                                                                                       }else if(prov.iAmFrom=='med'){
-                                                                                        prov.scoreList.add([nama,prov.scoreForMedium]);
+                                                                                        prov.scoreListMedum.add([nama,prov.scoreForMedium]);
                                                                                         prov.setSCoreListMED(json.encode(prov.scoreListMedum));
                                                                                         Navigator.pop(context);
 
                                                                                       }else if(prov.iAmFrom=='hard'){
-                                                                                        prov.scoreList.add([nama,prov.scoreForSusah]);
+                                                                                        prov.scoreListHard.add([nama,prov.scoreForSusah]);
                                                                                         prov.setSCoreListHARD(json.encode(prov.scoreListHard));
                                                                                         Navigator.pop(context);
 

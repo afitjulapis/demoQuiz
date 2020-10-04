@@ -182,7 +182,7 @@ class _EditMenuState extends State<EditMenu> with TickerProviderStateMixin {
                       child: InkWell(
                         onTap: (){
                           prov.editFrom='med';
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => Medium()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => EditMudah()));
 
                         },
                         child: Container(
@@ -286,7 +286,7 @@ class _EditMenuState extends State<EditMenu> with TickerProviderStateMixin {
                       child: InkWell(
                         onTap: (){
                           prov.editFrom='hard';
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => Sukar()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => EditMudah()));
                         },
                         child: Container(
                           height: h*0.1,
@@ -406,31 +406,18 @@ class _EditMenuState extends State<EditMenu> with TickerProviderStateMixin {
                       borderRadius: BorderRadius.circular(10),
                       child: InkWell(
                         onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => HighScore()));
+                          Navigator.pop(context);
                         },
                         child: Container(
                           height: h*0.08,
                           width: h*0.08,
                           color: Colors.amber,
-                          child: Center(child: FaIcon(FontAwesomeIcons.medal,color: Colors.grey[800],size: 30,)),
+                          child: Center(child: FaIcon(FontAwesomeIcons.arrowLeft,color: Colors.grey[800],size: 30,)),
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(width: w*0.1,),
-                  Material(
-                    elevation: 8,
-                    borderRadius: BorderRadius.circular(10),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Container(
-                        height: h*0.08,
-                        width: h*0.08,
-                        color: Colors.blue,
-                        child: Center(child: FaIcon(FontAwesomeIcons.plus,color: Colors.white,size: 30,)),
-                      ),
-                    ),
-                  ),
+                  
                 ],
               )
             ],

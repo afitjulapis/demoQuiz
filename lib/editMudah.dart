@@ -199,7 +199,7 @@ class _EditMudahState extends State<EditMudah> {
                         SizedBox(height: h*0.02,),
 
                         //ANSWER NUMBER 1
-                        prov.editFrom=='hard'? Container: InkWell(
+                        prov.editFrom=='hard'? Container(): InkWell(
                           onTap: (){
                           
                           },
@@ -255,7 +255,7 @@ class _EditMudahState extends State<EditMudah> {
                         SizedBox(height: h*0.02,),
 
                         //ANSWER NUMBER 2
-                        prov.editFrom=='hard'? Container: InkWell(
+                        prov.editFrom=='hard'? Container(): InkWell(
                           onTap: (){
                           },
                           child: Stack(
@@ -310,7 +310,7 @@ class _EditMudahState extends State<EditMudah> {
                         ),
                         SizedBox(height: h*0.02,),
 
-                        InkWell(
+                        prov.editFrom=='hard'? Container(): InkWell(
                           onTap: (){
                           },
                           child: Stack(
