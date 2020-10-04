@@ -5,7 +5,7 @@ import 'package:flutter_emoji/flutter_emoji.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:shape_of_view/shape_of_view.dart';
-import 'package:somedemo/editMenu.dart';
+import 'package:somedemo/editMudah.dart';
 import 'package:somedemo/mudah.dart';
 import 'package:somedemo/provider.dart';
 import 'package:somedemo/sederhana.dart';
@@ -13,12 +13,12 @@ import 'package:somedemo/sukar.dart';
 
 import 'highScore.dart';
 
-class DemoMenu extends StatefulWidget {
+class EditMenu extends StatefulWidget {
   @override
-  _DemoMenuState createState() => _DemoMenuState();
+  _EditMenuState createState() => _EditMenuState();
 }
 
-class _DemoMenuState extends State<DemoMenu> with TickerProviderStateMixin {
+class _EditMenuState extends State<EditMenu> with TickerProviderStateMixin {
   AnimationController _controller;
   Tween<double> _tween = Tween(begin: 0.9, end: 1);
   Tween<double> tuin = Tween(begin: 1, end: 1);
@@ -72,37 +72,19 @@ class _DemoMenuState extends State<DemoMenu> with TickerProviderStateMixin {
                         width: w,
                         child: Stack(
                           children: <Widget>[
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: <Widget>[
-                                SizedBox(width: w*0.28,),
-                                Text('Teka',style: TextStyle(fontFamily: 'bree',fontSize: 40,fontWeight: FontWeight.w600,)),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: <Widget>[
-                                SizedBox(width: w*0.34,),
-                                Column(
-                                  children: <Widget>[
-                                    SizedBox(height: h*0.045,),
-                                    Text('Apa',style: TextStyle(fontFamily: 'bree',fontSize: 40,fontWeight: FontWeight.w600,),),
-                                  ],
-                                ),
-                              ],
-                            ),
+                            
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                SizedBox(width: w*0.2,),
                                 Column(
                                   children: <Widget>[
-                                    SizedBox(height: h*0.028,),
-                                    Text(parser.emojify('🕵️'),style: TextStyle(fontSize: 50, fontWeight: FontWeight.w600),),
+                                    SizedBox(height: h*0.045,),
+                                    Text('Ubah Soalan',style: TextStyle(fontFamily: 'bree',fontSize: 40,fontWeight: FontWeight.w600,),),
                                   ],
                                 ),
                               ],
                             ),
+                            
                           ],
                         ),
                       ),
@@ -121,8 +103,8 @@ class _DemoMenuState extends State<DemoMenu> with TickerProviderStateMixin {
                       borderRadius: BorderRadius.circular(10),
                       child: InkWell(
                         onTap: (){
-                          prov.recordedAnswer=[];
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => Mudah()));
+                          prov.editFrom='ez';
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => EditMudah()));
                         },
                         child: Container(
                           height: h*0.1,
@@ -146,7 +128,7 @@ class _DemoMenuState extends State<DemoMenu> with TickerProviderStateMixin {
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.start,
                                         children: <Widget>[
-                                          Text("Rekod tertinggi : "+prov.topScore[0].toString()+'%',style: TextStyle(fontSize: 16,fontFamily: 'bree',color: Colors.green[500]),),
+                                          Text('Ubah soalan Mudah',style: TextStyle(fontSize: 16,fontFamily: 'bree',color: Colors.green[500]),),
                                         ],
                                       ),
                                     ],
@@ -199,7 +181,7 @@ class _DemoMenuState extends State<DemoMenu> with TickerProviderStateMixin {
                       borderRadius: BorderRadius.circular(10),
                       child: InkWell(
                         onTap: (){
-                          prov.recordedAnswerMed=[];
+                          prov.editFrom='med';
                           Navigator.push(context, MaterialPageRoute(builder: (context) => Medium()));
 
                         },
@@ -225,7 +207,7 @@ class _DemoMenuState extends State<DemoMenu> with TickerProviderStateMixin {
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.start,
                                         children: <Widget>[
-                                          Text("Rekod tertinggi: "+prov.topScore[1].toString()+'%',style: TextStyle(fontSize: 16,fontFamily: 'bree',color: Colors.amber[600]),),
+                                          Text('Ubah soalan Sederhana',style: TextStyle(fontSize: 16,fontFamily: 'bree',color: Colors.amber[600]),),
                                         ],
                                       ),
                                     ],
@@ -280,37 +262,10 @@ class _DemoMenuState extends State<DemoMenu> with TickerProviderStateMixin {
                                           ),
                                         ],
                                       ),
-                                      
                                     ],
                                   ),
                                 ],
                               ),
-                              prov.topScore[0]>50?Container():Container(
-                                height: h*0.1,
-                                width: w*0.8,
-                                child: BackdropFilter(
-                                  filter: ImageFilter.blur(sigmaX: 8, sigmaY: 5),
-                                  child: Container(
-                                    color: Colors.amber.withOpacity(0.2),
-                                  ),
-                                ),
-                              ),
-                              prov.topScore[0]>50?Container():Container(
-                                height: h*0.1,
-                                width: w*0.8,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: <Widget>[
-                                    Text("Capai 50% di Mudah",style: TextStyle(fontSize: 18,fontFamily: 'bree',color: Colors.grey[800]),),
-                                    SizedBox(width: w*0.05,),
-                                    FaIcon(FontAwesomeIcons.lock,color: Colors.grey[800],size: 30,),
-
-                                    
-                                  ],
-                                )
-                              ),
-
                             ],
                           )
                         ),
@@ -330,7 +285,7 @@ class _DemoMenuState extends State<DemoMenu> with TickerProviderStateMixin {
                       borderRadius: BorderRadius.circular(10),
                       child: InkWell(
                         onTap: (){
-                          prov.recordedAnswerSusah=[];
+                          prov.editFrom='hard';
                           Navigator.push(context, MaterialPageRoute(builder: (context) => Sukar()));
                         },
                         child: Container(
@@ -355,7 +310,7 @@ class _DemoMenuState extends State<DemoMenu> with TickerProviderStateMixin {
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.start,
                                         children: <Widget>[
-                                          Text("Rekod tertinggi: "+prov.topScore[2].toString()+'%',style: TextStyle(fontSize: 16,fontFamily: 'bree',color: Colors.white),),
+                                          Text('Ubah soalan Sukar',style: TextStyle(fontSize: 16,fontFamily: 'bree',color: Colors.white),),
                                         ],
                                       ),
                                     ],
@@ -427,31 +382,6 @@ class _DemoMenuState extends State<DemoMenu> with TickerProviderStateMixin {
                                           ),
                                         ],
                                       ),
-                                      prov.topScore[1]>50?Container(): Container(
-                                        height: h*0.1,
-                                        width: w*0.8,
-                                        child: BackdropFilter(
-                                          filter: ImageFilter.blur(sigmaX: 8, sigmaY: 5),
-                                          child: Container(
-                                            color: Colors.red.withOpacity(0.2),
-                                          ),
-                                        ),
-                                      ),
-                                      prov.topScore[1]>50?Container():Container(
-                                        height: h*0.1,
-                                        width: w*0.8,
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: <Widget>[
-                                            Text("Capai 50% di Sederhana",style: TextStyle(fontSize: 18,fontFamily: 'bree',color: Colors.grey[800]),),
-                                            SizedBox(width: w*0.05,),
-                                            FaIcon(FontAwesomeIcons.lock,color: Colors.grey[800],size: 30,),
-
-                                            
-                                          ],
-                                        )
-                                      ),
                                       
                                     ],
                                   ),
@@ -493,16 +423,11 @@ class _DemoMenuState extends State<DemoMenu> with TickerProviderStateMixin {
                     borderRadius: BorderRadius.circular(10),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
-                      child: InkWell(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => EditMenu()));
-                        },
-                        child: Container(
-                          height: h*0.08,
-                          width: h*0.08,
-                          color: Colors.blue,
-                          child: Center(child: FaIcon(FontAwesomeIcons.plus,color: Colors.white,size: 30,)),
-                        ),
+                      child: Container(
+                        height: h*0.08,
+                        width: h*0.08,
+                        color: Colors.blue,
+                        child: Center(child: FaIcon(FontAwesomeIcons.plus,color: Colors.white,size: 30,)),
                       ),
                     ),
                   ),
