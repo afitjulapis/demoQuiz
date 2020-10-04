@@ -307,25 +307,7 @@ class _HighScoreState extends State<HighScore> with TickerProviderStateMixin {
                         ),
                       ),
                     ),
-                    SizedBox(width: w*0.1,),
-                    Material(
-                      elevation: 5,
-                      borderRadius: BorderRadius.circular(10),
-                      child: InkWell(
-                        onTap: (){
-                          Navigator.pushNamedAndRemoveUntil(context, '/mainpage', (route)=>false);
-                        },
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Container(
-                            height: h*0.08,
-                            width: h*0.08,
-                            color: Colors.blue,
-                            child: Center(child: FaIcon(FontAwesomeIcons.home,color: Colors.grey[800],size: 30,)),
-                          ),
-                        ),
-                      ),
-                    ),
+                    
                   ],
                 )
               ],
