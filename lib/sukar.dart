@@ -292,7 +292,8 @@ class _SukarState extends State<Sukar> {
                             Navigator.push(context, MaterialPageRoute(builder: (context) => Scorepage()));
                           }else if(prov.recordedAnswerSusah[i].length>0){
                             ++totalAnswerd;
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => Scorepage()));
+                            prov.scoreForSusah=((correctans/prov.soalanSukar.length)*100).round();
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => Scorepage()));
 
                         }
                           

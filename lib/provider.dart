@@ -142,20 +142,20 @@ class Providing with ChangeNotifier{
   List soalanMudah= 
     [
       {
-        'question':'Bi 😆 😅 ?',
+        'question':'✔️ 💖',
         'answer':0,
-        'option':['Biol','Gila','Tidak Pasti']
+        'option':['Ada hati','Betul cinta','Benar hati']
       },
       {
-        'question':' Ibarat 👹 👺',
+        'question':'🌊 😉',
         'answer':2,
-        'option':['Ibarat musang bermuka','Ibarat kaki dimuka','Ibarat muka macam kaki']
+        'option':['Ombak kenyit','Gelombang senyum','Air muka']
       },
       {
-        'question':'Muka 🤡 💩',
-        'answer':1,
-        'option':['Muka ditimpa tahi','Muka badutahi','Muka buku?']
-      }
+        'question':'🩸🥩',
+        'answer':2,
+        'option':['Daging merah','Merah daging','Darah daging']
+      },
       
     ];
   List<int> recordedAnswer=List<int>();
@@ -163,19 +163,19 @@ class Providing with ChangeNotifier{
   List soalanSedang= 
     [
       {
-        'question':'😆 😅 ?',
-        'answer':0,
-        'option':['Biol','Gila','Tidak Pasti']
-      },
-      {
-        'question':'👹 👺',
-        'answer':2,
-        'option':['Ibarat musang bermuka','Ibarat kaki dimuka','Ibarat muka macam kaki']
-      },
-      {
-        'question':'🤡 💩',
+        'question':'🏋️👀',
         'answer':1,
-        'option':['Muka ditimpa tahi','Muka badutahi','Muka buku?']
+        'option':['Angkat pandangan','Berat mata','Kudrat memandang']
+      },
+      {
+        'question':'🍇👐',
+        'answer':2,
+        'option':['Anggur diberi','Buah terbuka','Buah tangan']
+      },
+      {
+        'question':'📚✋',
+        'answer':0,
+        'option':['Buku lima','Ilmu diterima','Buku ditangan']
       }
       
     ];
@@ -184,17 +184,13 @@ class Providing with ChangeNotifier{
   List soalanSusah= 
     [
       {
-        'question':' 😅😅😅 ?',
-        'answer':'haha',
+        'question':' 😎💖',
+        'answer':'buta hati',
       },
       {
-        'question':' 👹 👺👹 👺',
-        'answer':'mask',
+        'question':'✔️🌊 ✔️🐟',
+        'answer':'ada air ada ikan',
       },
-      {
-        'question':'🤡👹💩 👺 ',
-        'answer':'clown',
-      }
       
     ];
   List<String> recordedAnswerSusah=List<String>();
