@@ -202,7 +202,7 @@ class _DemoMenuState extends State<DemoMenu> with TickerProviderStateMixin {
                         child: InkWell(
                           onTap: (){
                             prov.recordedAnswerMed=[];
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => Medium()));
+                            prov.topScore[0]>50?Navigator.push(context, MaterialPageRoute(builder: (context) => Medium())):null;
 
                           },
                           child: Container(
@@ -333,7 +333,7 @@ class _DemoMenuState extends State<DemoMenu> with TickerProviderStateMixin {
                         child: InkWell(
                           onTap: (){
                             prov.recordedAnswerSusah=[];
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => Sukar()));
+                            prov.topScore[1]>50? Navigator.push(context, MaterialPageRoute(builder: (context) => Sukar())):null;
                           },
                           child: Container(
                             height: h*0.1,

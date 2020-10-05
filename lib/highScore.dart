@@ -302,7 +302,9 @@ class _HighScoreState extends State<HighScore> with TickerProviderStateMixin {
                             height: h*0.08,
                             width: h*0.08,
                             color: Colors.amber,
-                            child: Center(child: FaIcon(FontAwesomeIcons.arrowLeft,color: Colors.grey[800],size: 30,)),
+                            child: Center(
+                              child: FaIcon(
+                                FontAwesomeIcons.arrowLeft,color: Colors.grey[800],size: 30,)),
                           ),
                         ),
                       ),

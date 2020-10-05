@@ -383,13 +383,13 @@ class _EditMudahState extends State<EditMudah> {
                                 'answer':jawapan,
                                 'option':[pilihan1,pilihan2,pilihan3]
                               },);
-                              prov.setSoalan(json.encode(prov.soalanMedium));
+                              prov.setSoalanSederhana(json.encode(prov.soalanMedium));
                             }else if(prov.editFrom=='hard'){
                               prov.soalanSukar.add({
                                 'question':soalan,
                                 'answer':pilihan1,
                               },);
-                              prov.setSoalan(json.encode(prov.soalanSukar));
+                              prov.setSoalanSukar(json.encode(prov.soalanSukar));
                             }
                             Navigator.pop(context);
                           },
