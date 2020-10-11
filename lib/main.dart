@@ -6,8 +6,8 @@ import 'package:flutter_emoji/flutter_emoji.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:somedemo/demoMenu.dart';
-import 'package:somedemo/provider.dart';
+import 'package:tekaapa/demoMenu.dart';
+import 'package:tekaapa/provider.dart';
 
 void main() {
   runApp(

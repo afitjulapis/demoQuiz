@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:random_color/random_color.dart';
-import 'package:somedemo/provider.dart';
-import 'package:somedemo/scorepage.dart';
+import 'package:tekaapa/provider.dart';
+import 'package:tekaapa/scorepage.dart';
 
 class Medium extends StatefulWidget {
   @override
