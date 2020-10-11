@@ -5,11 +5,11 @@ import 'package:flutter_emoji/flutter_emoji.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:shape_of_view/shape_of_view.dart';
-import 'package:somedemo/editMenu.dart';
-import 'package:somedemo/mudah.dart';
-import 'package:somedemo/provider.dart';
-import 'package:somedemo/sederhana.dart';
-import 'package:somedemo/sukar.dart';
+import 'package:tekaapa/editMenu.dart';
+import 'package:tekaapa/mudah.dart';
+import 'package:tekaapa/provider.dart';
+import 'package:tekaapa/sederhana.dart';
+import 'package:tekaapa/sukar.dart';
 
 import 'highScore.dart';
 

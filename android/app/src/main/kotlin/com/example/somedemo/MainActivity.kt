@@ -1,4 +1,4 @@
-package com.example.somedemo
+package com.example.tekaapa
 
 import io.flutter.embedding.android.FlutterActivity
 

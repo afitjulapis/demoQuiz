@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:somedemo/provider.dart';
-import 'package:somedemo/scorepage.dart';
+import 'package:tekaapa/provider.dart';
+import 'package:tekaapa/scorepage.dart';
 
 class Sukar extends StatefulWidget {
   @override
